@@ -4,12 +4,11 @@ TLDR those annoying documents.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install PyPDF2 and openai.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements.
 Must have GPT3 Access (API-Key)
 
 ```bash
-pip3 install PyPDF2
-pip3 install openai
+pip3 install -r requirements.txt
 ```
 
 ## Usage

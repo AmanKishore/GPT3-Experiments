@@ -41,6 +41,6 @@ def getTLDRfromPDF(pdffile):
 
     return final_text
 
-if __name__ == "main":
+if __name__ == "__main__":
     response = getTLDRfromPDF('iOS14_iPadOS14.pdf')
     print(response)

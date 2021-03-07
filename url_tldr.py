@@ -20,8 +20,8 @@ def getTLDRfromURL():
         try: 
             read_pdf = PyPDF2.PdfFileReader(data)
 
-            # Iterate through pages (max of 15 to save money)
-            for page in range(min(read_pdf.getNumPages(), 15)):
+            # Iterate through pages (max of 1 to save money)
+            for page in range(min(read_pdf.getNumPages(), 1)):
                 ai_text = read_pdf.getPage(page).extractText()
 
                 response = openai.Completion.create(
@@ -38,8 +38,17 @@ def getTLDRfromURL():
         
         except:
             data = scraper(url)
-            for x in data:
-                print(x)
+            response = openai.Completion.create(
+                engine="davinci",
+                prompt=data[500:] + "\n\ntl;dr:",
+                temperature=0.3,
+                max_tokens=60,
+                top_p=1.0,
+                frequency_penalty=0.0,
+                presence_penalty=0.0
+            )
+            
+            final_text = response["choices"][0]["text"]
 
 
     "\n".join(list(OrderedDict.fromkeys(final_text.split("\n"))))

@@ -17,7 +17,7 @@ def getTLDRfromPDF(pdffile):
     final_text = ""
 
     # Iterate through pages (max of 15 to save money)
-    for i in range(min(pdfReader.numPages, 15)):
+    for i in range(min(pdfReader.numPages, 1)):
         pageObj = pdfReader.getPage(i)
         ai_text = pageObj.extractText()
 
